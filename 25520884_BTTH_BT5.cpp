@@ -1,123 +1,121 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
-struct Nhanvien {
-    string ID;
+struct Hocsinh{
     string hoten;
-    string phongban;
-    int luong;
-    int thuong;
-    int thuclanh;
+    double toan;
+    double van;
 
-    Nhanvien() {
-        ID       = "";
-        hoten    = "";
-        phongban = "";
-        luong    = 0;
-        thuong   = 0;
-        thuclanh = 0;
+    // Ham khoi tao mac dinh
+    // Dau vao: khong co
+    // Dau ra : khong co
+    // Chuc nang: khoi tao gia tri mac dinh cho hoc sinh
+    Hocsinh(){
+        hoten = "";
+        toan  = 0.0;
+        van   = 0.0;
+    }
+    bool kiemtraHoTen(string s){
+    if(s.empty()) return false;
+        for(char c : s){
+            // chi reject so thuần (0-9), van chap nhan chu co dau
+            if(c >= '0' && c <= '9'){
+                return false;
+            }
+        }   
+        return true;
+    }
+    // Ham nhapthongtin
+    // Dau vao: nguoi dung nhap ho ten, diem toan, diem van
+    // Dau ra : khong co, gan gia tri hop le vao struct
+    // Chuc nang: kiem tra ho ten khong trong, diem nam trong khoang 0-10
+    //            dung cin.ignore() truoc getline de tranh bo qua input
+    void nhapthongtin(){
+        string ten;
+        double t, v;
+
+        // Nhap ho ten
+        cin.ignore();
+        do{
+            cout << "Nhap ho ten hoc sinh: ";
+            getline(cin, ten);
+            if(cin.fail()){
+                cout << "Sai kieu du lieu, nhap lai!" << endl;
+                cin.clear();
+                cin.ignore(1000, '\n');
+                continue;
+            }
+            if(!kiemtraHoTen(ten)){
+                cout << "Ho ten khong hop le, nhap lai!" << endl;
+                continue;
+            }
+            break;
+        }while(true);
+
+        // Nhap diem toan
+        do{
+            cout << "Nhap diem toan (0 - 10): ";
+            cin >> t;
+            if(cin.fail()){
+                cout << "Sai kieu du lieu, nhap lai!" << endl;
+                cin.clear();
+                cin.ignore(1000, '\n');
+                continue;
+            }
+            if(t < 0.0 || t > 10.0){
+                cout << "Diem toan phai tu 0 den 10, nhap lai!" << endl;
+                continue;
+            }
+            break;
+        }while(true);
+
+        // Nhap diem van
+        do{
+            cout << "Nhap diem van (0 - 10): ";
+            cin >> v;
+            if(cin.fail()){
+                cout << "Sai kieu du lieu, nhap lai!" << endl;
+                cin.clear();
+                cin.ignore(1000, '\n');
+                continue;
+            }
+            if(v < 0.0 || v > 10.0){
+                cout << "Diem van phai tu 0 den 10, nhap lai!" << endl;
+                continue;
+            }
+            break;
+        }while(true);
+
+        hoten = ten;
+        toan  = t;
+        van   = v;
     }
 
-    void nhap() {
-        cout << "ID      : "; cin >> ID;
-        cin.ignore(); 
-        cout << "Ho ten  : "; getline(cin, hoten);
-        cout << "Phong ban: "; cin >> phongban;
-        cout << "Luong   : "; cin >> luong;
-        cout << "Thuong  : "; cin >> thuong;
-        thuclanh = luong + thuong; 
+    // Ham diemtrungbinh
+    // Dau vao: toan, van cua struct
+    // Dau ra : diem trung binh kieu double
+    // Chuc nang: tinh trung binh cong cua diem toan va diem van
+    double diemtrungbinh(){
+        return (toan + van) / 2.0;
     }
 
-    void xuat() {
-        cout << "ID      : " << ID       << endl;
-        cout << "Ho ten  : " << hoten    << endl;
-        cout << "Phong ban: " << phongban << endl;
-        cout << "Luong   : " << luong    << endl;
-        cout << "Thuong  : " << thuong   << endl;
-        cout << "Thuc lanh: " << thuclanh << endl;
+    // Ham xuatthongtin
+    // Dau vao: khong co
+    // Dau ra : in thong tin hoc sinh ra man hinh
+    // Chuc nang: hien thi ho ten, diem toan, diem van, diem trung binh
+    void xuatthongtin(){
+        cout << "Ho va ten     : " << hoten << endl;
+        cout << "Diem toan     : " << toan  << endl;
+        cout << "Diem van      : " << van   << endl;
+        cout << "Diem trung binh: " << diemtrungbinh() << endl;
     }
 };
 
-struct DanhSachNhanVien {
-    int n;
-    Nhanvien ds[1000];
-
-    void nhap() {
-        cout << "So nhan vien: "; cin >> n;
-        for (int i = 0; i < n; i++) {
-            cout << "\nNhan vien thu " << i + 1 << ":\n";
-            ds[i].nhap();
-        }
-    }
-    int tongthuclanh(){
-        int total = 0;
-        for(int i = 0;i < n;i++){
-            total += ds[i].thuclanh;
-        }
-        return total;
-    }
-    int sosanh(){
-        int min_luong = ds[0].luong;
-        for(int i = 1;i < n;i++){
-            if(min_luong > ds[i].luong){
-                min_luong = ds[i].luong;
-            }
-        }
-        return min_luong;
-    }
-    void luongthapnhat(){
-        int min_val = sosanh();
-        for(int i = 0;i < n;i++){
-            if(ds[i].luong == min_val){
-                ds[i].xuat();
-            }
-        }
-    }
-    int demnhanvien(){
-        int dem = 0;
-        for(int i = 0;i < n;i++){
-            if(ds[i].thuong >= 1200000){
-                dem++;
-            }
-        }
-        return dem;
-    }
-    static bool congthuc(Nhanvien a,Nhanvien b){
-        if(a.phongban != b.phongban){
-            return a.phongban < b.phongban;
-        }
-        else{
-            return a.ID > b.ID;
-        }
-    }
-    void sapxep(){
-        sort(ds,ds + n,congthuc);
-    }
-    void xuat() {
-        for (int i = 0; i < n; i++) {
-            cout << "\nNhan vien thu " << i + 1 << ":\n";
-            ds[i].xuat();
-        }
-    }
-};
-
-int main() {
-    DanhSachNhanVien ds;
-    ds.nhap();
-    // cau a
-    int tong = ds.tongthuclanh();
-    cout<<"tong thuc lanh cua ca cong ty la: "<<tong<<endl;
-    // cau b
-    int min_val = ds.sosanh();
-    cout<<"nhan vien co luong co ban thap nhatt la: "<<endl;
-    ds.luongthapnhat();
-    // cau c
-    int nhanvien = ds.demnhanvien();
-    cout<<"co tong cong "<<nhanvien<<" co tien thuong >= 1200000"<<endl;
-    // cau d
-    ds.sapxep();
-    cout<<"danh sach nhan vien sau khi sap xep la: ";
-    ds.xuat();
-    return 0;   
+int main(){
+    Hocsinh hs;
+    cout << "Nhap thong tin hoc sinh:" << endl;
+    hs.nhapthongtin();
+    cout << "\nThong tin hoc sinh:" << endl;
+    hs.xuatthongtin();
+    return 0;
 }

@@ -58,7 +58,7 @@ struct Phanso{
     // Ham tong
     // Dau vao: phan so p2
     // Dau ra : phan so ket qua p1 + p2 da rut gon
-    // Chuc nang: tinh (tuso*p2.mauso + p2.tuso*mauso) / (mauso*p2.mauso)
+    // Chuc nang: tinh (tuso*p2.mauso + p2.tuso*mauso) / (mauso*p2.mauso) --> Công thức
     Phanso tong(Phanso p2){
         Phanso res;
         res.tuso = tuso * p2.mauso + mauso * p2.tuso;
@@ -69,7 +69,7 @@ struct Phanso{
     // Ham hieu
     // Dau vao: phan so p2
     // Dau ra : phan so ket qua p1 - p2 da rut gon
-    // Chuc nang: tinh (tuso*p2.mauso - p2.tuso*mauso) / (mauso*p2.mauso)
+    // Chuc nang: tinh (tuso*p2.mauso - p2.tuso*mauso) / (mauso*p2.mauso)--> Công thức
     Phanso hieu(Phanso p2){
         Phanso res;
         res.tuso = tuso * p2.mauso - mauso * p2.tuso;
@@ -80,7 +80,7 @@ struct Phanso{
     // Ham tich
     // Dau vao: phan so p2
     // Dau ra : phan so ket qua p1 * p2 da rut gon
-    // Chuc nang: tinh (tuso*p2.tuso) / (mauso*p2.mauso)
+    // Chuc nang: tinh (tuso*p2.tuso) / (mauso*p2.mauso)--> Công thức
     Phanso tich(Phanso p2){
         Phanso res;
         res.tuso = tuso * p2.tuso;
@@ -91,7 +91,7 @@ struct Phanso{
     // Ham thuong
     // Dau vao: phan so p2 (p2 khac 0)
     // Dau ra : phan so ket qua p1 / p2 da rut gon
-    // Chuc nang: nhan p1 voi nghich dao cua p2, kiem tra p2 khac 0
+    // Chuc nang: nhan p1 voi nghich dao cua p2, kiem tra p2 khac 0(Công thức)
     Phanso thuong(Phanso p2){
         Phanso res;
         res.tuso = tuso * p2.mauso;
@@ -101,7 +101,7 @@ struct Phanso{
     }
     // Ham xuatps
     // Dau vao: khong co
-    // Dau ra : in phan so dang "tuso/mauso" ra man hinh
+    // Dau ra : in phan so dang tuso/mauso ra man hinh
     // Chuc nang: hien thi phan so, mau luon duong do rutgon() dam bao
     void xuatps(){
         cout<<tuso<<"/"<<mauso;
