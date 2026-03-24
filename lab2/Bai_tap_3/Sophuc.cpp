@@ -2,22 +2,33 @@
 #include "Sophuc.h"
 
 using namespace std;
+
+// Đầu vào: Nhận input từ thuộc kiểu string
+// Đầu ra: Trả về giá trị true hoặc false
 bool kiemtraso(string s){
     if(s.empty()) return false;
-    // truong hop xu li so am
+    // trả về false nếu chuỗi không có kí tự nào
     for(char c : s){
+        // truy cập từng kí tự trong chuỗi s(duyệt từng kí tự)
         if(c == '-'){
+            // nếu gặp dấu âm thì chuyển sang kí tự tiếp theo
             continue;
         }
         if(!isdigit(c)){
+            // chỉ chấp nhận các kí tự là số
+            // loại bỏ các trường hợp là kí tụ chữ hay số thập phân
             return false;
         }
     }
     return true;
 }
+
+// Đầu vào: Không có, nhập input cho hàm class
+// Đầu ra: Không có, lưu vào trong hàm class(private)
 void Sophuc::Nhap(){
     // nhap so nguyen cho phan thuc va phan ao cua 1 so phuc
     cout<<"nhap cac phan tu cho so phuc: "<<endl;
+    // đầu tiên là chuyển số về chuỗi để kiểm tra
     string thuc = to_string(iThuc);
     string ao = to_string(iAo);
     do{
@@ -27,12 +38,16 @@ void Sophuc::Nhap(){
             cout<<"phan thuc va phan ao bi sai kieu du lieu,vui long nhap lai"<<endl;
             continue;
         }
+        // nếu thỏa thì chuyển các kí tự này về về dạng stoi thông qua stoi (biến đổi sang int)
         iThuc = stoi(thuc);
         iAo = stoi(ao);
         break;
     }while(true);
 }
 
+
+// Đầu vào: Không có
+// Đầu ra: Xuất ra thông tin của số phức, lấy phần thực và ảo từ hàm nhập trươc đó
 void Sophuc::Xuat(){
     cout<<"So phuc:";
     if(iAo > 0){
@@ -43,7 +58,7 @@ void Sophuc::Xuat(){
     }
 }
 
-// cac phep tinh giua cac so phuc voi nhau
+// Công thức phép tinh của 2 số phức
 
 Sophuc Sophuc::Tong(Sophuc P2){
     Sophuc ketqua;
