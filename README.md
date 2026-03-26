@@ -11,37 +11,25 @@
 
 ### 🔹 Lab 01: Cơ bản
 
-* [Bài 1](./Lab01/bai1.cpp)
-* [Bài 2](./Lab01/bai2.cpp)
+* [Bài 1](./lab1/25520884_BTTH_BT1.cpp)
+* [Bài 2](./lab1/25520884_BTTH_BT2.cpp)
+* [Bài 3](./lab1/25520884_BTTH_BT3.cpp)
+* [Bài 4](./lab1/25520884_BTTH_BT4.cpp)
+* [Bài 5](./lab1/25520884_BTTH_BT5.cpp)
 
 ### 🔹 Lab 02: Class & Object
 
-* [Bài 1 - Phân số](./Lab02/PhanSo.cpp)
-* [Bài 2 - Thời gian](./Lab02/ThoiGian.cpp)
+* [Bài 1 - ngày tháng](./lab2/Bai_tap_1)
+* [Bài 2 - phân số](./lab2/Bai_tap_2)
+* [Bài 3 - số phức](./lab2/Bai_tap_3)
+* [Bài 4 - giờ phút](./lab2/Bai_tap_4)
 
-### 🔹 Lab 03: Operator Overloading
-
-* [Bài 1](./Lab03/bai1.cpp)
-
----
 
 ## 📌 Mô tả
 
 Repository này chứa toàn bộ bài tập lab môn OOP.
 Mỗi lab được chia thành thư mục riêng để dễ theo dõi.
 
----
-
-## 🚀 Cách chạy
-
-* Compile bằng g++
-
-```bash
-g++ file.cpp -o main
-./main
-```
-
----
 
 ## 📎 Ghi chú
 
