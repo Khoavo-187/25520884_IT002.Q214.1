@@ -1,21 +1,50 @@
-# IT002 - Lập Trình Hướng Đối Tượng
-## Bài Tập Thực Hành 1
+# 📘 OOP - IT002
 
-| Thông tin | Chi tiết |
-|-----------|----------|
-| Họ và tên | Võ Minh Khoa |
-| MSSV | 25520884 |
-| GVHD | Nguyễn Ngọc Quí |
-| Môn học | IT002 - Lập Trình Hướng Đối Tượng |
+**Họ tên:** Võ Minh Khoa
+**MSSV:** 25520884
+**Môn học:** Lập trình hướng đối tượng (OOP)
+**Lớp:** IT002.Q214.1
 
 ---
 
-## Danh sách bài tập
+## 📂 Danh sách bài lab
 
-| Bài | Mô tả | File |
-|-----|-------|------|
-| Bài 1 | Nhập một phân số, rút gọn và xuất kết quả | [25520884_BTTH_BT1.cpp](25520884_BTTH_BT1.cpp) |
-| Bài 2 | Nhập hai phân số, tìm phân số lớn nhất | [25520884_BTTH_BT2.cpp](25520884_BTTH_BT2.cpp) |
-| Bài 3 | Tính tổng, hiệu, tích, thương hai phân số | [25520884_BTTH_BT3.cpp](25520884_BTTH_BT3.cpp) |
-| Bài 4 | Nhập một ngày, tìm ngày kế tiếp | [25520884_BTTH_BT4.cpp](25520884_BTTH_BT4.cpp) |
-| Bài 5 | Nhập học sinh, tính điểm trung bình | [25520884_BTTH_BT5.cpp](25520884_BTTH_BT5.cpp) |
+### 🔹 Lab 01: Cơ bản
+
+* [Bài 1](./Lab01/bai1.cpp)
+* [Bài 2](./Lab01/bai2.cpp)
+
+### 🔹 Lab 02: Class & Object
+
+* [Bài 1 - Phân số](./Lab02/PhanSo.cpp)
+* [Bài 2 - Thời gian](./Lab02/ThoiGian.cpp)
+
+### 🔹 Lab 03: Operator Overloading
+
+* [Bài 1](./Lab03/bai1.cpp)
+
+---
+
+## 📌 Mô tả
+
+Repository này chứa toàn bộ bài tập lab môn OOP.
+Mỗi lab được chia thành thư mục riêng để dễ theo dõi.
+
+---
+
+## 🚀 Cách chạy
+
+* Compile bằng g++
+
+```bash
+g++ file.cpp -o main
+./main
+```
+
+---
+
+## 📎 Ghi chú
+
+* Code được viết bằng C++
+* Có sử dụng OOP (class, constructor, operator overloading, ...)
+
