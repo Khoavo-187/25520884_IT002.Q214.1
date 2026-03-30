@@ -12,7 +12,7 @@ int main() {
 
     Thoigian res = T1.TinhCongThemMotGiay();
 
-    cout<<"khoang thoi gian tiep theo sau khi da cong them 1s: ";
+    cout<<"khoang thoi gian tiep theo sau khi da cong them 1s: "<<endl;
     res.Xuat();
     
     return 0;
