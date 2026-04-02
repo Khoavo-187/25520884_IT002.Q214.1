@@ -7,18 +7,18 @@ using namespace std;
 // Đầu ra: Trả về giá trị true hoặc false
 bool kiemtraso(string s){
     if(s.empty()) return false;
-    // trả về false nếu chuỗi không có kí tự nào
-    for(char c : s){
-        // truy cập từng kí tự trong chuỗi s(duyệt từng kí tự)
-        if(c == '-'){
-            // nếu gặp dấu âm thì chuyển sang kí tự tiếp theo
+    
+    int start = (s[0] == '-') ? 1 : 0;  // cho phép dấu '-' ở đầu
+    if(start == (int)s.size()) return false; // chuỗi chỉ có "-"
+    
+    bool coDauCham = false;
+    for(int i = start; i < (int)s.size(); i++){
+        if(s[i] == '.'){
+            if(coDauCham) return false; // không cho phép 2 dấu chấm: "3.1.4"
+            coDauCham = true;
             continue;
         }
-        if(!isdigit(c)){
-            // chỉ chấp nhận các kí tự là số
-            // loại bỏ các trường hợp là kí tụ chữ hay số thập phân
-            return false;
-        }
+        if(!isdigit(s[i])) return false;
     }
     return true;
 }
@@ -26,7 +26,7 @@ bool kiemtraso(string s){
 // Đầu vào: Không có, nhập input cho hàm class
 // Đầu ra: Không có, lưu vào trong hàm class(private)
 void Sophuc::Nhap(){
-    // nhap so nguyen cho phan thuc va phan ao cua 1 so phuc
+    // nhap so double cho phan thuc va phan ao cua 1 so phuc
     cout<<"nhap cac phan tu cho so phuc: "<<endl;
     // đầu tiên là chuyển số về chuỗi để kiểm tra
     string thuc = to_string(iThuc);
@@ -39,8 +39,8 @@ void Sophuc::Nhap(){
             continue;
         }
         // nếu thỏa thì chuyển các kí tự này về về dạng stoi thông qua stoi (biến đổi sang int)
-        iThuc = stoi(thuc);
-        iAo = stoi(ao);
+        iThuc = stod(thuc);
+        iAo = stod(ao);
         break;
     }while(true);
 }
@@ -62,7 +62,7 @@ void Sophuc::Xuat(){
 
 Sophuc Sophuc::Tong(Sophuc P2){
     Sophuc ketqua;
-    ketqua.iThuc = iThuc + P2.iAo;
+    ketqua.iThuc = iThuc + P2.iThuc;
     ketqua.iAo = iAo + P2.iAo;
     return ketqua;
 }
@@ -75,7 +75,7 @@ Sophuc Sophuc::Hieu(Sophuc P2){
 Sophuc Sophuc::Tich(Sophuc P2){
     Sophuc ketqua;
     ketqua.iThuc = iThuc * P2.iThuc - iAo * P2.iAo;
-    ketqua.iAo = iThuc * P2.iThuc + iAo * P2.iAo;
+    ketqua.iAo = iThuc * P2.iAo + iAo * P2.iThuc;
     return ketqua;
 }
 Sophuc Sophuc::thuong(Sophuc P2){

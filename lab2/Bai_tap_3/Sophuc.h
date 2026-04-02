@@ -3,8 +3,8 @@
 
 class Sophuc{
 private:
-    int iThuc;
-    int iAo;
+    double iThuc;
+    double iAo;
 public:
     void Nhap();
     void Xuat();
