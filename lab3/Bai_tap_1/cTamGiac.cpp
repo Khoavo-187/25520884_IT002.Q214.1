@@ -45,7 +45,7 @@ void cTamGiac::xuat(){
 double distance(Diem A,Diem B){
     double dx = pow((B.GetX() - A.GetX()),2);
     double dy = pow((B.GetY() - A.GetY()),2);
-    return sqrt(dx + dy);
+    return sqrt(dx + dy); // cong thuc tinh khoang cach la : sqrt((xb - xa)^2 - (yb - ya)^2)
 }
 int cTamGiac::Kiemtratamgiac(){
     // dau tien tinh cac do dai cac canh de phan loai
@@ -90,6 +90,7 @@ int cTamGiac::Kiemtratamgiac(){
 }
 
 double cTamGiac::ChuVi(){
+    // cong thuc chu vi p = a + b + c
     return distance(A,B) + distance(B,C) + distance(A,C);
 }
 double cTamGiac::DienTich(){
@@ -102,12 +103,12 @@ void cTamGiac::TinhTien(double dx, double dy){
     double ax0 = A.GetX(), ay0 = A.GetY();
     double bx0 = B.GetX(), by0 = B.GetY();
     double cx0 = C.GetX(), cy0 = C.GetY();
-
+    // tu nhung bien tam ta se lay du lieu r tinh tinh tien cua tam giac ngay luc do
     // set giá trị mới
     A.SetX(ax0 + dx);  A.SetY(ay0 + dy);
     B.SetX(bx0 + dx);  B.SetY(by0 + dy);
     C.SetX(cx0 + dx);  C.SetY(cy0 + dy);
-
+    // sau khi tinh tien xong thi set tam giac ngay tai vi tri sau khi da tinh tien
     cout << "Toa do A sau tinh tien: ";
     A.xuat();
     cout<<endl;
@@ -121,14 +122,17 @@ void cTamGiac::TinhTien(double dx, double dy){
 
 void cTamGiac::Quay(double goc, Diem tam){
     double ox = tam.GetX(), oy = tam.GetY();
+    // cho 1 diem tam bat ki muon quay quanh  
     double rad = goc * PI / 180.0;
+    // su dung don vi rad de tinh cong thuc co cos va sin
 
     // lưu hết trước khi set
+    // tuong tu nhu ham tinhtien, su dung inp hien tai, toa do cua ABC lam goc va quay quanh diem tam
     double ax0 = A.GetX(), ay0 = A.GetY();
     double bx0 = B.GetX(), by0 = B.GetY();
     double cx0 = C.GetX(), cy0 = C.GetY();
-
-    A.SetX(ox + (ax0-ox)*cos(rad) - (ay0-oy)*sin(rad));
+    // Tinh dua tren cong thuc xoay quanh diem tam voi goc duoc cho don vi radian
+    A.SetX(ox + (ax0-ox)*cos(rad) - (ay0-oy)*sin(rad)); 
     A.SetY(oy + (ax0-ox)*sin(rad) + (ay0-oy)*cos(rad));
 
     B.SetX(ox + (bx0-ox)*cos(rad) - (by0-oy)*sin(rad));
@@ -139,9 +143,18 @@ void cTamGiac::Quay(double goc, Diem tam){
 }
 
 void cTamGiac::PhongTo(double ti_le){
+    // Tinh phong to theo kieu tim trong tam cua tam giác toa do ngay luc nay
     double ox = (A.GetX() + B.GetX() + C.GetX()) / 3.0;
     double oy = (A.GetY() + B.GetY() + C.GetY()) / 3.0;
 
+    // sau khi tinh xong trong tam toa do, tinh ti le thong qua cong thuc 
+    /*
+        ox = (Ax + Bx + Cx) / 3  
+        oy = (Ay + By + Cy) / 3  
+
+        x' = ox + (x - ox) * ti_le  
+        y' = oy + (y - oy) * ti_le  
+    */
     double ax0 = A.GetX(), ay0 = A.GetY();
     double bx0 = B.GetX(), by0 = B.GetY();
     double cx0 = C.GetX(), cy0 = C.GetY();
@@ -157,6 +170,7 @@ void cTamGiac::PhongTo(double ti_le){
 }
 
 void cTamGiac::thunho(double ti_le){
+    // doi voi thu nho tuong tu , minh chi can doa nguoc gia tri muon giam bang cach lay 1.0 / ti_le
     if(ti_le <= 0){
         cout << "ti le phai lon hon 0!" << endl;
         return;

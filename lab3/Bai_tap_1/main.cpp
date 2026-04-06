@@ -7,7 +7,7 @@
 using namespace std;
 
 int main(){
-    cTamGiac T1,t2;
+    cTamGiac T1;
     // khoi tao tam giac bang cach nhap
     T1.nhap();
     cout<<"Xuat tam giac: "; // tam giac hien tai
