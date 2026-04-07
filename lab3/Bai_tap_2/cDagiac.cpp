@@ -31,7 +31,7 @@ void cDagiac::nhap(){
 }
 
 void cDagiac::xuat(){
-    cout<<"cac toa do dinh cua da giac la: ";
+    cout<<"cac toa do dinh cua da giac la: "<<endl;
     for(int i = 0;i < n;i++){
         arr[i].xuatdiem();
     }
@@ -83,26 +83,26 @@ int cDagiac::kiemtradagiac(){
             return -1;
         }
         if(A == B && B == C){
-            cout<<"day la tam giac deu";
+            cout<<"day la tam giac deu ";
         }
         else if(A == B || A == C || C == B){
-            cout<<"day la tam giac can";
+            cout<<"day la tam giac can ";
         }
         else{
-            cout<<"day la tam giac thuong";
+            cout<<"day la tam giac thuong ";
         }
 
         double new_arr[] = {A,B,C};
         sort(new_arr,new_arr + 3);
         double check = new_arr[0] * new_arr[0] + new_arr[1] * new_arr[1] - new_arr[2] * new_arr[2];
         if(abs(check) <= 1e-6){
-            cout<<"day la tam giac vuong"<<endl;
+            cout<<"va day la tam giac vuong"<<endl;
         }
         else if(check < 0){
-            cout<<"day la tam giac tu"<<endl;
+            cout<<"va day la tam giac tu"<<endl;
         }
         else{
-            cout<<"day la tam giac nhon"<<endl;
+            cout<<"va day la tam giac nhon"<<endl;
         }
         return 1;
     }
@@ -206,8 +206,10 @@ void cDagiac::tinhtien(double dx,double dy){
 void cDagiac::quay(double goc,Diem tam){
     double rad = goc * PI / 180.0;
     for(int i = 0;i < n;i++){
-        arr[i].SetX(tam.GetX() + (arr[i].GetX() - tam.GetX()) * cos(rad) - (arr[i].GetY() - tam.GetY()) * sin(rad));
-        arr[i].SetY(tam.GetY() + (arr[i].GetX() - tam.GetX()) * sin(rad) + (arr[i].GetY() - tam.GetY()) * cos(rad));
+        double oldx = arr[i].GetX();
+        double oldy = arr[i].GetY();
+        arr[i].SetX(tam.GetX() + (oldx - tam.GetX()) * cos(rad) - (oldy - tam.GetY()) * sin(rad));
+        arr[i].SetY(tam.GetY() + (oldx - tam.GetX()) * sin(rad) + (oldy - tam.GetY()) * cos(rad));
     }
 }
 
