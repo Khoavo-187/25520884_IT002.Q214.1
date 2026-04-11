@@ -14,6 +14,8 @@ bool songuyento(int n){
 }
 
 bool cDSPhanSo::sosanhtang(Phanso a,Phanso b){
+    // ham sosanhtang nay ta su dung static nham de dung chung cho tat ca object ma khong can phai truyen tham so cho bat ki object nao
+    // Vi ham sort tang dan can cong thuc so sanh thuan tuy giua cac phan so nen ta dat 2 ham sosanhtang va sosanhgiam la 2 ham static de dung chung trong class
     return a.lower(b);
 }
 bool cDSPhanSo::sosanhgiam(Phanso a,Phanso b){

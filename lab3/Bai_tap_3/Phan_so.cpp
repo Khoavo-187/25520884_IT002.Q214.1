@@ -22,18 +22,6 @@ bool Phanso::greater(Phanso P2){
     // day cong thuc nguoc lai de sort cac phan so giam dan
 }
 
-bool kiemtra(int n){
-    string s = to_string(n);
-    for(char c : s){
-        if(c == '-'){
-            continue; // xu li truong hop am trong char c
-        }
-        if(!isdigit(c)){
-            return false;
-        }
-    }
-    return true;
-}
 int UCLN(int a,int b){
     return __gcd(a,b);
 }
@@ -63,8 +51,14 @@ void Phanso::nhapps(){
     cout<<"nhap tu so va mau so cho phan so tren: "<<endl;
     do{
         cin>>tuso>>mauso;
-        if(!kiemtra(tuso) || !kiemtra(mauso)){
-            cout<<"input khong hop le, vui long nhap lai";
+        if(cin.fail()){
+            cout<<"nhap sai kieu du lieu, vui long nhap lai input";
+            cin.clear();
+            cin.ignore(1000,'\n');
+            continue;
+        }
+        if(mauso == 0){
+            cout<<"mau so khong duoc bang 0, vui long nhap lai";
             continue;
         }
         break;
