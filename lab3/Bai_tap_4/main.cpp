@@ -26,9 +26,18 @@ int main(){
     else{
         cout<<"day khong phai la mang tang dan"<<endl;
     }
-    cout<<"phan tu le nho nhat nam trong mang la "<<arr1.min_value_le()<<endl;
-    cout<<"so nguyen to lon nhat nam trong mang la: "<<arr1.max_songuyento()<<endl;
-
+    if(arr1.min_value_le() == -1){
+        cout<<"khong co phan tu nao la phan tu le nho nhat"<<endl;
+    }
+    else{
+        cout<<"phan tu le nho nhat nam trong mang la "<<arr1.min_value_le()<<endl;
+    }
+    if(arr1.max_songuyento() == -1){
+        cout<<"khong co phan tu nao la so nguyen to trong mang"<<endl;
+    }
+    else{
+        cout<<"so nguyen to lon nhat nam trong mang la: "<<arr1.max_songuyento()<<endl;
+    }
     cout<<"mang sau khi sap xep tang dan la: ";
     arr1.saptangdan();
     arr1.xuat();

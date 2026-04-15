@@ -5,7 +5,7 @@ using namespace std;
 
 
 bool songuyeno(int n){
-    if(n == 0 || n == 1) return false;
+    if(n < 1) return false;
     for(int i = 2;i * i <= n;i++){
         if(n % i ==0){
             return false;
@@ -25,7 +25,15 @@ cArray::cArray(int n){
         arr[i] = 0;
     }
 }
-
+//copy constructor
+// su dung copy constructor vi dung raw point int* nen khi copy object thi se dan den loi (double free)
+cArray::cArray(const cArray& other){
+    n = other.n;
+    arr = new int[n];
+    for(int i = 0;i < n;i++){
+        arr[i] = other.arr[i];
+    }
+}
 cArray::~cArray(){
     delete[] arr;
 }
@@ -41,6 +49,10 @@ void cArray::nhap(){
     }
 }
 void cArray::xuat(){
+    if(n == 0){
+        cout<<"Mang khong co phan tu ben trong";
+        return;
+    }
     cout<<"mang so nguyen la: ";
     for(int i = 0;i < n;i++){
         cout<<arr[i]<<" ";
@@ -72,12 +84,8 @@ int cArray::dem(int x){
 bool cArray::kiemtratangdan(){
     if(n == 0) return false;
     if(n == 1) return true; // mac dinh neu co 1 phan tu thi duoc xem la tang dan
-    for(int i = 0;i < n;i++){
-        for(int j = i + 1;j < n;j++){
-            if(arr[i] > arr[j]){
-                return false; // tra ve sai neu gia tri ban dau lon hon gia tri tiep theo
-            }
-        }
+    for(int i = 0;i < n - 1;i++){
+        if(arr[i] > arr[i + 1]) return false; // xet cac gia tri dang xet tiep theo cua arr[i]
     }
     return true;
 }
@@ -92,6 +100,7 @@ int cArray::min_value_le(){
             }
         }
     }
+    if(min_val == INT_MAX) return -1; // xet trong truong hop khong co phan tu le nho nhat
     return min_val;
 }
 
@@ -105,6 +114,7 @@ int cArray::max_songuyento(){
             }
         }
     }
+    if(max_val == INT_MIN) return -1; // tra ve -1 neu khong ton tai max val
     return max_val;
 }
 

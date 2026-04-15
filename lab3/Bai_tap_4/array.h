@@ -6,6 +6,9 @@ class cArray{
 private:
     int n; // nhap vao so luong so nguyen 
     int* arr; // mang so nguyen luu tru
+
+    // Merged Sort
+    // cac ham private method -> cho phep truy cap arr truc tiep tu cac thuoc tinh cua class
     void mergedtang(int l,int mid,int r); // ham tang dan
     void mergedgiam(int l,int mid,int r); // ham giam dan
 
@@ -16,6 +19,7 @@ private:
 public:
     cArray();
     cArray(int n);
+    cArray(const cArray& other);// copy constructor 
     ~cArray();
 
     void nhap();
