@@ -20,9 +20,9 @@ cDaThuc::cDaThuc(int bac){
 //copy constructor
 cDaThuc::cDaThuc(const cDaThuc& other){
     bac = other.bac;
-    heso = new double[bac+1];
+    heso = new double[bac+1]; // cap phat mot vung nho moi, doc lap
     for(int i  =0;i <= bac;i++){
-        heso[i] =  other.heso[i];
+        heso[i] =  other.heso[i]; // sao chep gia tri ban sao qua
     }
 }
 
@@ -38,7 +38,7 @@ void cDaThuc::nhap(){
         do{
             cout<<"nhap he so thu "<<i + 1<<" cho bac: ";
             cin>>heso[i];
-
+            // xet nhung truong hop nhap sai input cho heso
             if(cin.fail()){
                 cout<<"he so nhap vao khong hop le,vui long nhap lai";
                 continue;
@@ -91,8 +91,9 @@ long double cDaThuc::giatri(int x){
     return total;
 }
 cDaThuc cDaThuc::tong(cDaThuc D2){
+    // tim bac cao nhat cua 1 trong 2 dathuc , da thuc goc va da thuc D2
     int max_bac = max(bac,D2.bac);
-    cDaThuc res(max_bac);
+    cDaThuc res(max_bac); // tao ban sao res de sao luu gia tri tinh toan D1 + D2
     for(int i = 0;i <= bac;i++){
         int n = bac - i; 
         res.heso[max_bac - n] = res.heso[max_bac - n] + heso[i];
@@ -101,7 +102,7 @@ cDaThuc cDaThuc::tong(cDaThuc D2){
         int n = D2.bac - i;
         res.heso[max_bac - n] = res.heso[max_bac - n] + D2.heso[i];
     }
-    return res;
+    return res; // sau do nhiem vu cua copy constructor tao ban sao res tra ve 
 }
 
 cDaThuc cDaThuc::hieu(cDaThuc D2){
