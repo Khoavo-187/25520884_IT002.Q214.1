@@ -40,7 +40,9 @@ void cDaThuc::nhap(){
             cin>>heso[i];
             // xet nhung truong hop nhap sai input cho heso
             if(cin.fail()){
-                cout<<"he so nhap vao khong hop le,vui long nhap lai";
+                cout<<"he so nhap vao khong hop le,vui long nhap lai"<<endl;
+                cin.clear();
+                cin.ignore(1000,'\n');
                 continue;
             }
             break;
