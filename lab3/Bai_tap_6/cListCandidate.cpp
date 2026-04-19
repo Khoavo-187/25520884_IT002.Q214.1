@@ -7,7 +7,7 @@ using namespace std;
 
 cListCandidate::cListCandidate(){
     n = 0;
-    danhsach = nullptr; // neun khong co hoc sinh nao thi null, mang danh sach khong ton tai
+    danhsach = nullptr; // neu khong co hoc sinh nao thi null, mang danh sach khong ton tai
 }
 cListCandidate::cListCandidate(int n){
     this->n = n; // cho san so luong th sinh n lam tham so cho constructor co tham so
@@ -54,7 +54,6 @@ void cListCandidate::xuat(){
 }
 
 void cListCandidate::xuatlonhon15(){
-    cout<<"thong tin thi sinh co tong diem hon 15 la: ";
     for(int i = 0;i < n;i++){
         if(danhsach[i].max_diem() > 15){
             // dieu kien de xuat ra thong tin sinh vien co tong diem lon hon 15 
@@ -77,8 +76,10 @@ double cListCandidate::max_cao_nhat(){
 }
 
 void cListCandidate::xuatcaonhat(){
+    // luu gia tri lon nhat vao bien max 
     double max = max_cao_nhat();
     for(int i = 0;i < n;i++){
+        // su dung sai so nho nhat(1e-9) de co the tim ra so lon nhat vi kieu du lieu o day la double nen khong tim ra duoc cac so tiem can voi max
         if(abs(max - danhsach[i].max_diem()) < 1e-9){
             danhsach[i].xuat();
         }
@@ -86,6 +87,7 @@ void cListCandidate::xuatcaonhat(){
 }
 void cListCandidate::giamdan(){
     if(n <= 1) return;
+    // cong thuc giam dan 
     for(int i = 0;i < n;i++){
         for(int j = i + 1;j < n;j++){
             if(danhsach[i].max_diem() < danhsach[j].max_diem()){

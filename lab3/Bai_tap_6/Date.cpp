@@ -4,6 +4,7 @@ using namespace std;
 
 
 bool namnhuan(int year){
+    // ham kiem tra nam nhuan
     if((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0)){
         return true;
     }
@@ -13,10 +14,12 @@ bool namnhuan(int year){
 }
 int Date::songaytrongthang(){
     // tao mang cac ngay toi da theo tung thang
+    // dua vao thang tuong ung voi tung index trong mang ngay
     int arrthang[] = {31,28,31,30,31,30,31,31,30,31,30,31};
     if(month == 2 && namnhuan(year)){
         return 29;
     }
+    //tra ve ngay tuong ung
     return arrthang[month - 1];
 }
 
@@ -36,6 +39,7 @@ void Date::nhap(){
     do{
         cin>>day>>month>>year;
         if(cin.fail()){
+            // neu truong hop nhap du lieu cho ngay thang nam sai kieu thi yeu cau nhap lai
             cout<<"nhap lai input cho ngay thang va nam, vui long nhap lai"<<endl;
             cin.clear();
             cin.ignore(1000,'\n');
@@ -54,6 +58,7 @@ void Date::nhap(){
             continue;
         }
         if(day > songaytrongthang()){
+            // xet truong hop neu ngay nhap vao vuot qua ngay cho phep theo thang do thi yeu cau nhap lai
             cout<<"thang "<<month<<" co "<<songaytrongthang()<<" ngay"<<endl;
             continue;
         }
@@ -61,6 +66,8 @@ void Date::nhap(){
     }while(true);
 }
 
+// ham xuat
+//chuyen het ve dang string va yeu cau xuat ra duoi dang "00/00/0000" sao cho dung format
 void Date::xuat(){
     string ngay = to_string(day);
     string thang = to_string(month);
