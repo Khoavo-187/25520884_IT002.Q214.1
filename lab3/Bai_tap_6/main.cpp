@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+#include "Date.h"
+#include "Date.cpp"
+#include "cCandidate.h"
+#include "cCandidate.cpp"
+#include "cListCandidate.h"
+#include "cListCandidate.cpp"
+using namespace std;
+
+int main(){
+    cListCandidate L1;
+    cout<<"nhap thong tin danh sach thi sinh: "<<endl;
+    L1.nhap();
+
+    cout<<endl;
+    cout<<"xuat thong tin nhap vao cua thi sinh: ";
+    L1.xuat();
+    cout<<endl;
+    cout<<"thong tin thi sinh co tong diem lon hon 15:";
+    L1.xuatlonhon15();
+    cout<<endl;
+    L1.xuatcaonhat();
+
+    cout<<"xuat danh sach thi sinh giam dan: ";
+    L1.giamdan();
+    L1.xuat();
+    return 0;
+}
