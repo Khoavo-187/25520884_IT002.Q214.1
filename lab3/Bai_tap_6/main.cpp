@@ -13,13 +13,12 @@ int main(){
     L1.nhap();
 
     cout<<endl;
-    cout<<"xuat thong tin nhap vao cua thi sinh: ";
     L1.xuat();
     cout<<endl;
     cout<<"thong tin thi sinh co tong diem lon hon 15:";
     L1.xuatlonhon15();
     cout<<endl;
-    cout<<"Thi sinh co tong diem lon nhat la: ";
+    cout<<"Thi sinh co tong diem lon nhat la: "<<L1.max_cao_nhat()<<" diem"<<endl;
     L1.xuatcaonhat();
     
 

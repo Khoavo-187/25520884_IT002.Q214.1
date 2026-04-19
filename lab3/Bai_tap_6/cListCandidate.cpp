@@ -47,19 +47,27 @@ void cListCandidate::nhap(){
 }
 
 void cListCandidate::xuat(){
-    cout<<"thong tin cua "<<n<<" thi sinh la: "<<endl;
+    cout<<"xuat thong tin cua "<<n<<" thi sinh"<<endl;
     for(int i =0;i < n;i++){
+        cout<<"Thi sinh thu "<<i + 1<<endl;
         danhsach[i].xuat();
     }
 }
 
 void cListCandidate::xuatlonhon15(){
+    int dem = 0;
     for(int i = 0;i < n;i++){
         if(danhsach[i].max_diem() > 15){
             // dieu kien de xuat ra thong tin sinh vien co tong diem lon hon 15 
             // lay dieu kien tu max_diem tinh tong ra
             danhsach[i].xuat();
+            dem++; 
         }
+    }
+    // xu li truong hop neu co bat ki thi sinh nao khong co tong diem lon hon 15
+    if(dem == 0){
+        cout<<"khong co thi sinh nao co tong diem tren 15 diem";
+        return;
     }
 }
 
@@ -78,11 +86,17 @@ double cListCandidate::max_cao_nhat(){
 void cListCandidate::xuatcaonhat(){
     // luu gia tri lon nhat vao bien max 
     double max = max_cao_nhat();
+    int count = 0; // dem so luong thi sinh cung dat duoc muc diem cao nhat
     for(int i = 0;i < n;i++){
         // su dung sai so nho nhat(1e-9) de co the tim ra so lon nhat vi kieu du lieu o day la double nen khong tim ra duoc cac so tiem can voi max
         if(abs(max - danhsach[i].max_diem()) < 1e-9){
             danhsach[i].xuat();
+            count++;
         }
+    }
+    if(count >= 2){
+        // chi xet tu 2 nguoi tro len cung dat muc diem cao nhat
+        cout<<"Vay co tong cong "<<count<<" thi sinh cung dat duoc muc diem toi da"<<endl;
     }
 }
 void cListCandidate::giamdan(){
