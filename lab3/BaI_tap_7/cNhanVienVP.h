@@ -1,7 +1,7 @@
 #ifndef NHANVIEN_H
-#define NHANGVIEN_H
+#define NHANVIEN_H
 #include "Date.h"
-
+using namespace std;
 class cNhanVienVP{
 private:
     string ID;

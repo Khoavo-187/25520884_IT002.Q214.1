@@ -50,7 +50,7 @@ int cListNhanVien::max_salary(){
     for(int i = 1;i< n;i++){
         // bat dau bang 1 do da lay thong tin cua luong cua nhan vien 0 lam goc 
         if(max_value < arr[i].getSalary()){
-            max_value = arr[i].getSalary() // gan gia tri max value neu tim duoc luong cao hon
+            max_value = arr[i].getSalary(); // gan gia tri max value neu tim duoc luong cao hon
         }
     }
     return max_value;
@@ -86,18 +86,29 @@ int cListNhanVien::total_salary(){
 // ham tra ve gia tri cua nguoi cao tuoi nhat trong danh sach nhan vien
 void cListNhanVien::old_age(){
     Date gia_nhat = arr[0].getDate();
-    for(int i = 1;i < n;i++){
-        if(gia_nhat.sosanh(arr[i].getDate()) == 1){
-            continue; 
-        }
-        else if(gia_nhat.sosanh(arr[i].getDate()) == 0){
-            // ???
-        }
-        else{
+    int index = -1;
+    for(int i =1;i < n;i++){
+        if(arr[i].getDate().sosanh(gia_nhat) == 1){
             gia_nhat = arr[i].getDate();
+            index = i;
         }
     }
-    return gia_nhat;
+    cout<<"Nguoi cao tuoi nhat trong danh sach nhan vien la: "<<endl;
+    arr[index].xuat();
 }
 
+
+
+// ham sap xep danh sach nhan vien theo luong cua tung nguoi
+
+void cListNhanVien::tangdan(){
+    for(int i = 0;i < n;i++){
+        for(int j = i + 1;j < n;j++){
+            if(arr[i].getSalary() > arr[j].getSalary()){
+                swap(arr[i],arr[j]);
+                // hoan doi danh sach nhan vien neu tien luong cua nguoi truoc lon hon nguoi ke tiep
+            }
+        }
+    }
+}
 

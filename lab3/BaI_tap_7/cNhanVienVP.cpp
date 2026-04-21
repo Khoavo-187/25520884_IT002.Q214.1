@@ -23,7 +23,7 @@ cNhanVienVP::cNhanVienVP(){
     ID = "";
     hoten = "";
     ngaysinh = Date(); // Date() la tham so mac dinh cho ngaysinh
-    salary = 0
+    salary = 0;
 }
 // ham khoi tao co tham so 
 cNhanVienVP::cNhanVienVP(string ID,string hoten,Date ngaysinh,int salary){
@@ -73,7 +73,7 @@ void cNhanVienVP::nhap(){
             cout<<"ho va ten khong hop le, vui long nhap lai"<<endl;
             continue;
         }
-
+        break;
     }while(true);
 
     cout<<"nhap ngay thang nam sinh: "; ngaysinh.nhap();
@@ -86,6 +86,7 @@ void cNhanVienVP::nhap(){
             cin.ignore(1000,'\n'); // xoa bo nho dem tranh gay overflow
             continue;
         }
+        break;
     }while(true);
 }
 

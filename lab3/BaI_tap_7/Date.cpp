@@ -69,17 +69,19 @@ void Date::nhap(){
 
 // ham so sanh ngay thang nam sinh
 int Date::sosanh(Date D2){
-    // dau tien la so sanh nam truoc xem nam nao lon nhar
-    Date max_age = *this; // lay gia tri ngay sinh hien tai khi bat dau so sanh
-    if((max_age.year > D2.year) || (max_age.year == D2.year && max_age.month < D2.month) || (max_age.year == D2.year && max_age.month == D2.month && max_age.day < D2.day)){
-        return 1; // tra ve true neu ngay minh dang so sanh lon hon thi minh lay Date lam nhan vien lon nhat
-    }
-    else if((max_age.year == D2.year && max_age.month == D2.month && max_age.day == D2.day)){
-        return 0; // tra ve 0 neu nguoi co cung ngay sinh
-    }
-    else{
-        return -1; // tra ve false
-    }
+    // so sanh tra ve gia tri ngay sinh som hon theo tung nam, thang , ngay theo thu tu
+    // tra ve 1 neu ngay sinh cua D2 > ngay sinh lay input trong ham class hien tai
+    // tra ve -1 neu ngay sinh hien tai lon hon khi so voi D2
+    if(year < D2.year) return 1;
+    if(year > D2.year) return -1;
+
+    if(month < D2.month) return 1;
+    if(month > D2.month) return -1;
+
+    if(day < D2.day) return 1;
+    if(day > D2.day) return -1;
+
+    return 0; // tra ve 0 neu ngay sinh giong nhau ==> cung do tuoi
 }
 // ham xuat
 //chuyen het ve dang string va yeu cau xuat ra duoi dang "00/00/0000" sao cho dung format 
