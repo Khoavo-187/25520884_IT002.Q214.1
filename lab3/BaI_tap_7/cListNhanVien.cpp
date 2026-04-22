@@ -45,6 +45,10 @@ B3. Vong lap goi arr[i].nhap() de nhap thong tin tung nhan vien.
  */
 void cListNhanVien::nhap(){
     cout<<"nhap so luong nhan vien muon nhap vao: "; cin>>n;
+    while(n <= 0){
+        cout<<"nhap so luong nhan vien hop le, nhap lai: ";
+        cin>>n;
+    }
     delete[] arr;
     arr = new cNhanVienVP[n];
     for(int i = 0;i < n;i++){
@@ -80,25 +84,7 @@ int cListNhanVien::max_salary(){
     }
     return max_value;
 }
-void cListNhanVien::luongcaonhat(){
-    if (n == 0) {
-        cout << "Danh sach nhan vien rong!\n";
-        return;
-    }
-    cout<<"thong tin nhan vien luong lon nhat: "<<endl;
-    int count = 0;
-    for(int i = 0;i < n;i++){
-        if(arr[i].getSalary() == max_salary()){
-            // so sanh xem lieu co nhan vien co cung muc luong cao nhat hay khong
-            // neu co thi xuat ra het tat ca thong tin nhan vien
-            arr[i].xuat();
-            count++;
-        }
-    }
-    if(count >= 2){
-        cout<<"Co tong cong "<<count<<" nhan vien co luong cao nhat"<<endl;
-    }
-}
+
 /*
 Phuong thuc: luongcaonhat()
 Input : Khong co tham so
@@ -109,7 +95,26 @@ B2. Duyet toan bo mang arr:
 Neu arr[i].getSalary() == max_salary() thi in thong tin nhan vien do,
 tang bien dem count.
 B3. Neu count >= 2 thi thong bao co nhieu nhan vien cung luong cao nhat.
- */int cListNhanVien::total_salary(){
+ */
+void cListNhanVien::luongcaonhat(){
+    if (n == 0) {
+        cout << "Danh sach nhan vien rong!\n";
+        return;
+    }
+    cout<<"thong tin nhan vien luong lon nhat: "<<endl;
+    int count = 0;
+    int max_value = max_salary();
+    for(int i = 0;i < n;i++){
+        if(arr[i].getSalary() == max_value){
+            arr[i].xuat();
+            count++;
+        }
+    }
+    if(count >= 2){
+        cout<<"Co tong cong "<<count<<" nhan vien co luong cao nhat"<<endl;
+    }
+}
+int cListNhanVien::total_salary(){
     int total = 0;
     for(int i = 0;i < n;i++){
         total += arr[i].getSalary(); 
