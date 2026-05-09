@@ -2,6 +2,10 @@
 #include "CTime.h"
 using namespace std;
 
+
+// Hàm normalize chuẩn hóa thời gian với mọi thời gian trong input(nằm trong private)
+// Công thức chuẩn hóa bằng cách chuyển hết thời gian thành tổng số giây
+// Sau đó phân ra thành giờ -> phút -> giây theo công thức để thời gian luôn được chuẩn hóa chuấn
 void CTIME::normalize(){
     // xu li cac truong hop bi tran so giay , so phut, so gio neu vuot qua so toi da
     int total = gio * 3600 + phut * 60 + giay; 
@@ -12,6 +16,8 @@ void CTIME::normalize(){
     giay = total % 60;
 }
 
+// hàm set thời gian cho từng mốc
+// Sau đó sẽ chuẩn hóa lại thời gian hợp lệ
 void CTIME::set(int gio,int phut,int giay){
     this->gio = gio;
     this->phut= phut;
@@ -19,27 +25,39 @@ void CTIME::set(int gio,int phut,int giay){
     normalize();
 }
 
+// Hàm khởi tạo có tham số băng cách khởi tạo thông qua hàm set trước đó
 CTIME::CTIME(int gio,int phut,int giay){
     set(gio,phut,giay);
 }
 
 // cac toan tu cong tru cac so nguyen giay
-
+// Input: Lấy input từ lúc nhập vào 
+// Output: Trả về thời gian sau khi cộng s giây
+// giải thuật: Lấy giây cộng với s giây, vì hàm gọi là CTIME tức là gọi lại hàm khởi tạo mà bên trong đã có sẵn normalize nên thời gian sẽ được chuẩn hóa
 CTIME CTIME::operator+(int s) const{
-    return CTIME(gio,phut,giay + s); // cong thuc tra ve thoi gian sau khi cong so nguyen s
+    return CTIME(gio,phut,giay + s);
+     // cong thuc tra ve thoi gian sau khi cong so nguyen s
     // goi constructor cua CTIME de cong vao s , sau do la normalize lai
 }
+
+// Tương tự như hàm cộng ở trên thì lấy thời gian hiện tai - s -> normalize()
 CTIME CTIME::operator-(int s) const{
     return CTIME(gio,phut,giay - s); // cong thuc tra ve thoi gian sau khi tru so nguyen s
 }
 
+// Hàm tăng thời gian 1s
+// Input: lấy thời gian hiện tại ++
+// output: Tra ve thời gian sau khi cộng
+// giải thuật: su dung prefix de cong thang vao thoi gian, sau do normalize() va tra lai thoi gian hien tai 
 CTIME CTIME::operator++() {
-    // su dung prefix de cong thang vao thoi gian
     giay++;
-    normalize(); // do day la ham nam trong private nen se tu dong lay input trong ham class de tu xu li cac input
-    return *this; // tra ve thoi gian hien tai sau khi da cap nhat va duoc normalize
+    normalize(); 
+    return *this; 
 }
-
+// Hàm giảm thời gian 1s
+// Input: lấy thời gian hiện tại --
+// output: Tra ve thời gian sau khi trừ
+// giải thuật: su dung prefix de trừ thang vao thoi gian, sau do normalize() va tra lai thoi gian hien tai 
 CTIME CTIME::operator--() {
     giay--;
     normalize();
@@ -58,6 +76,7 @@ istream& operator>>(istream& is,CTIME &T1){
             is.ignore(1000,'\n');
             continue;
         }
+        // các điều kiện duyệt giờ phút giây hợp lệ
         if(T1.gio < 0 || T1.phut < 0 || T1.giay < 0){
             cout << "Khong duoc nhap so am, nhap lai: ";
             continue;

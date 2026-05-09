@@ -6,7 +6,7 @@ using namespace std;
 
 int main() {
     
-    sophuc P1(4.5),P2(7.8,-9.6); // khoi tao 2 lop so phuc P1,P2 co tham so truoc de test truong hop dac biet
+    sophuc P1(-100),P2(32.5,2); // khoi tao 2 lop so phuc P1,P2 co tham so truoc de test truong hop dac biet
     cout<<"So phuc P1: "<<P1<<endl;
     cout<<"So phuc P2: "<<P2<<endl;
 

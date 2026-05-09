@@ -6,7 +6,7 @@ using namespace std;
 
 int main() {
     // khoi tao co tham so truoc va test truong hop dac biet
-    phanso S1(6,9),S2(-7);
+    phanso S1(12,-45),S2(-87);
     cout<<"Phan so S1: "<<S1<<endl;
     cout<<"Phan so S2: "<<S2<<endl;
 
