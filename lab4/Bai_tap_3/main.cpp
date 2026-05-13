@@ -43,6 +43,6 @@ int main() {
         this_thread::sleep_for(chrono::seconds(1));
         ++T1; // cho phep thoi gian chay lien tuc
     }
-    
+   
     return 0;
 }
