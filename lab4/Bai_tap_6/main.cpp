@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 #include "CVector.h"
-#include "CVector.cpp"
 using namespace std;
 
 

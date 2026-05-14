@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 #include "sophuc.h"
-#include "sophuc.cpp"
 using namespace std;
 
 

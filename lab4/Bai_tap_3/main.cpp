@@ -2,7 +2,6 @@
 #include <chrono>
 #include <thread>
 #include "CTime.h"
-#include "CTIME.cpp"
 using namespace std;
 
 

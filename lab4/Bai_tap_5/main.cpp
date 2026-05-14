@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 #include "Dathuc.h"
-#include "Dathuc.cpp"
 using namespace std;
 
 int main(){

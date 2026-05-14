@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 #include "phanso.h"
-#include "phanso.cpp"
 using namespace std;
 
 
