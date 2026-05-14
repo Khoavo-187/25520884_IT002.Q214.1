@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 #include "CDate.h"
-#include "CDate.cpp"
 using namespace std;
 
 
@@ -47,8 +46,8 @@ int main() {
     int all_days = abs(D3 - D4);
     double t = all_days / 365.0; // tinh ti le cho tong so ngay cho rut tien
     cout<<"Tong so ngay la: "<<all_days<<" ngay"<<endl;
-    double money = n * (1 + k * t);
-    cout<<"Tong so tien nhan lai duoc la: "<<money;
+    double long money = n * (1 + k * t);
+    cout<<"Tong so tien nhan lai duoc la: "<<money<<" dong";
 
 
     return 0;
