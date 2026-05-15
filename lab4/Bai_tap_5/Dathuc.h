@@ -21,7 +21,7 @@ public:
     dathuc operator*(dathuc D2) const;
 
     // tinh toan da thuc khi biet duoc so nguyen s
-    double total(int s) const;
+    double total(double s) const;
     
     // cac ham so sanh, bang hon
     bool operator==(dathuc D2) const;

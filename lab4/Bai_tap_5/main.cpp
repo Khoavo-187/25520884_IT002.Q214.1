@@ -13,7 +13,7 @@ int main(){
     cout<<"Da thuc D1(x): "<<D1<<endl;
     cout<<"Da thuc D2(x): "<<D2<<endl;
 
-    int x;
+    double x;
     cout<<"Nhap so x: "; cin>>x;
 
     cout<<"Ket qua D1("<<x<<"): "<<D1.total(x)<<endl;

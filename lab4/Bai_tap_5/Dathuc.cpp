@@ -83,6 +83,9 @@ ostream& operator<<(ostream& os,dathuc D2){
             os<<"x^"<<max_bac<<" ";
         }
     }
+    if(!isfound){
+        os<<0;
+    }
     return os;
 }
 
@@ -90,7 +93,7 @@ ostream& operator<<(ostream& os,dathuc D2){
 // Input: Lấy từ trong hàm class lúc mới nhập(có tham số s)
 // output: Trả về giá trị cộng lại được sau khi biết s
 // giải thuât: Duyệt hết bac bang i va lay sum cong cho tung gia tri da thuc theo tung bac co he so rieng 
-double dathuc::total(int s) const{
+double dathuc::total(double s) const{
     double sum = 0;
     for(int i = 0;i <= bac;i++){
         int new_bac = bac - i;
@@ -114,7 +117,7 @@ dathuc dathuc::operator+(dathuc D2) const{
     for(int j = 0;j <= D2.bac;j++){
         res.arr[max_val - D2.bac + j] += D2.arr[j];
     }
-    return dathuc(res);
+    return res;
 }
 
 // cac phan toan phep tru
@@ -130,7 +133,7 @@ dathuc dathuc::operator-(dathuc D2) const{
     for(int j = 0;j <= D2.bac;j++){
         res.arr[max_val - D2.bac + j] -= D2.arr[j];
     }
-    return dathuc(res);
+    return res;
 }
 
 dathuc dathuc::operator*(dathuc D2)const{
@@ -142,7 +145,7 @@ dathuc dathuc::operator*(dathuc D2)const{
             res.arr[i + j] += arr[i] * D2.arr[j];
         }
     }
-    return dathuc(res);
+    return res;
 }
 
 // cac ham so sanh giua cac da thuc
