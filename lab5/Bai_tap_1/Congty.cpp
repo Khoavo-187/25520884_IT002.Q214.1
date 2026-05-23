@@ -2,12 +2,16 @@
 #include "Congty.h"
 using namespace std;
 
+// constructor co tham so
+// input: so luong nhan vien ban dau (mac dinh la 0)
+// giai thuat: khoi tao n va de danh sach tro ve nullptr, cap phat dong se thuc hien trong nhapdanhsach
 congty::congty(int n){
     this->n = n;
     this->danhsachnhanvien = nullptr;
 }
 
-
+// destructor
+// giai thuat: giai phong tung doi tuong nhan vien truoc, sau do xoa mang con tro de tranh memory leak
 congty::~congty(){
     for(int i = 0;i < n;i++){
         delete danhsachnhanvien[i];
@@ -15,6 +19,9 @@ congty::~congty(){
     delete[] danhsachnhanvien;
 }
 
+// nhap danh sach nhan vien cua cong ty tu ban phim
+// giai thuat: hoi so luong nhan vien, cap phat mang con tro, voi moi vi tri cho nguoi dung chon
+//loai nhan vien (van phong/san xuat) roi tao doi tuong tuong ung va goi ham nhap()
 void congty::nhapdanhsach(){
     cout<<"Nhap so luong nhan vien muon nhap vao: "; cin>>n;
     danhsachnhanvien = new nhanvien*[n];
@@ -40,6 +47,8 @@ void congty::nhapdanhsach(){
     }
 }
 
+// in toan bo danh sach nhan vien ra man hinh
+// giai thuat: duyet mang con tro va goi ham xuat() theo kieu da hinh, tu dong chon dung xuat() cua lop con
 void congty::xuatdanhsach(){
     for(int i = 0;i < n;i++){
         cout<<"Thong tin nhan vien thu "<<i + 1<<" la: "<<endl;
@@ -47,6 +56,9 @@ void congty::xuatdanhsach(){
     }
 }
 
+// tinh tong tien luong cong ty phai tra cho tat ca nhan vien
+// output: tong luong theo don vi dong
+// giai thuat: duyet toan bo danh sach, cong don luong cua tung nguoi qua ham da hinh Tinhluong()
 long long congty::total_luong(){
     long long sum = 0;
     for(int i = 0;i < n;i++){
@@ -55,12 +67,14 @@ long long congty::total_luong(){
     return sum;
 }
 
+// tim nhan vien san xuat co luong thap nhat
+// output: con tro toi doi tuong sanxuat co luong thap nhat, nullptr neu khong co nhan vien san xuat nao
+// giai thuat: dung dynamic_cast de loc ra cac nhan vien san xuat, so sanh luong va giu lai nguoi thap nhat
 sanxuat* congty::min_luong() const{
     sanxuat* min_val = nullptr;
     for(int i = 0;i < n;i++){
-        // dau tien la tim trong tat ca nhan vien san xuat thi dau la nhan vien san xuat it tien nhat
         sanxuat* SX = dynamic_cast<sanxuat*>(danhsachnhanvien[i]);
-        if(!SX) continue; // neu nhan vien do khong phai san xuat thi bo qua
+        if(!SX) continue;
 
         if(!min_val || min_val->Tinhluong() > SX->Tinhluong()){
             min_val = SX;
@@ -69,6 +83,10 @@ sanxuat* congty::min_luong() const{
     return min_val;
 }
 
+// tim nhan vien van phong co do tuoi lon nhat (sinh som nhat)
+// output: con tro toi doi tuong vanphong lon tuoi nhat, nullptr neu khong co nhan vien van phong nao
+// giai thuat: dung dynamic_cast de loc nhan vien van phong, so sanh ngay sinh qua ham sosanh(),
+//ai co ngay sinh nho hon (sosanh tra ve 1) la nguoi lon tuoi hon
 vanphong* congty::max_tuoi() const{
     vanphong* max_tuoi = nullptr;
     for(int i = 0;i < n;i++){
