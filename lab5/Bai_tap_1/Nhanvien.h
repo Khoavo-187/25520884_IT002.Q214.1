@@ -11,6 +11,7 @@ public:
     nhanvien();
     nhanvien(string hoten,Date D1);
 
+    virtual nhanvien* clone() = 0;
     // cac bien getter
     Date getDate();
     virtual ~nhanvien();

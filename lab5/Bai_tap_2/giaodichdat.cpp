@@ -47,5 +47,5 @@ void dat::xuat(){
     cout<<"Thong tin giao dich dat: "<<endl;
     giaodich::xuat();
     cout<<"Loai dat: "<<loaidat<<endl;
-    cout<<"Thanh tien: "<<Thanhtien()<<endl;
+    cout<<"Thanh tien: "<<(long long)Thanhtien()<<endl;
 }

@@ -14,6 +14,9 @@ vanphong::vanphong(string hoten,Date D1,int ngaylamviec) : nhanvien(hoten,D1){
     this->ngaylamviec = ngaylamviec;
 }
 
+vanphong* vanphong::clone(){
+    return new vanphong(*this);
+}
 // tinh luong nhan vien van phong
 // output: tong tien luong theo don vi dong
 // giai thuat: luong = so ngay lam viec * 100.000 dong/ngay

@@ -10,6 +10,7 @@ public:
     vanphong();
     vanphong(string hoten,Date D1,int ngaylamviec);
     
+    vanphong* clone();
     long long Tinhluong() override;
     void nhap() override;
     void xuat() override;

@@ -59,5 +59,5 @@ void nhapho::xuat(){
     giaodich::xuat();
     cout<<"Loai nha: "<<loainha<<endl;
     cout<<"Dia chi: "<<diachi<<endl;
-    cout<<"Thanh tien: "<<Thanhtien()<<" dong"<<endl;
+    cout<<"Thanh tien: "<<(long long)Thanhtien()<<" dong"<<endl;
 }

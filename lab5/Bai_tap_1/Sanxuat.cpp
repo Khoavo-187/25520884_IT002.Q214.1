@@ -16,6 +16,9 @@ sanxuat::sanxuat(string hoten,Date D1,int luongcoban,int sanpham) : nhanvien(hot
     this->sanpham = sanpham;
 }
 
+sanxuat* sanxuat::clone(){
+    return new sanxuat(*this);
+}
 // tinh luong nhan vien san xuat
 // output: tong tien luong theo don vi dong
 // giai thuat: luong = luong co ban + so san pham * 5000 dong/san pham

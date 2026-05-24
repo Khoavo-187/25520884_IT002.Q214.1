@@ -11,6 +11,7 @@ public:
     sanxuat();
     sanxuat(string hoten,Date D1,int luongcoban,int sanpham);
 
+    sanxuat* clone();
     long long Tinhluong() override;
     void nhap() override;
     void xuat() override;
