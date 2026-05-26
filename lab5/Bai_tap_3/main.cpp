@@ -27,16 +27,15 @@ int main(){
         cout<<"Khong co diem cao nhat cua sinh vien dai hoc"<<endl;
     }
     else{
-        cout<<"Sinh vien dai hpc co diem tb cao nhat la: "<<max_diem->getDiem();
+        cout<<"Sinh vien dai hpc co diem tb cao nhat la: "<<max_diem->getDiem()<<endl;
         max_diem->xuat();
     }
-
     caodang* max_diem_tb = H1.max_tb_diem();
     if(!max_diem_tb){
         cout<<"Khong co diem cao nhat cua sinh vien dai hoc"<<endl;
     }
     else{
-        cout<<"Sinh vien cao dang co diem tb cao nhat la: "<<max_diem_tb->getDiem();
+        cout<<"Sinh vien cao dang co diem tb cao nhat la: "<<max_diem_tb->getDiem()<<endl;
         max_diem_tb->xuat();
     }
     vector<daihoc*> kototnghiepDH = H1.getDH();

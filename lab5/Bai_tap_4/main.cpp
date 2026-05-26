@@ -28,10 +28,20 @@ int main(){
     vector<kiemchung*> DSkiemchung = H1.GetKC();
     laptrinh* Max_sal_LT = H1.Luong_cao(DSlaptrinh);
     kiemchung* min_sal_KC = H1.Luong_thap(DSkiemchung);
-    cout<<"Thong tin lap trinh vien luong cao nhat la: "<<endl;
-    Max_sal_LT->xuat();
-    cout<<"Thong tin kiem chung vien luong thap nhat la: "<<endl;
-    min_sal_KC->xuat();
+    if(!Max_sal_LT){
+        cout<<"Khong co thong tin lap trinh vien cao nhat"<<endl;
+    }
+    else{
+        cout<<"Thong tin lap trinh vien luong cao nhat la: "<<endl;
+        Max_sal_LT->xuat();
+    }
+    if(!min_sal_KC){
+        cout<<"Khong co thong tin kiem chung vien luong thap nhat"<<endl;
+    }
+    else{
+        cout<<"Thong tin kiem chung vien luong thap nhat la: "<<endl;
+        min_sal_KC->xuat();
+    }
 
     return 0;
 }
